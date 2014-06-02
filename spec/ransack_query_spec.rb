@@ -6,9 +6,11 @@ describe RansackQuery do
   end
 
   it 'should return a grouping to build off' do
+    klass = nil
     RansackQuery.build do |group|
-      group.class.should equal Grouping
+      klass = group.class
     end
+    klass.should equal Grouping
   end
 
 end
