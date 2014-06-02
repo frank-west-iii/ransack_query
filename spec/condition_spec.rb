@@ -52,7 +52,10 @@ describe Condition do
                 'p' => 'eq',
                 'v' => {
                     '0' => {
-                        'value' => 'value'
+                        'value' => 'value1'
+                    },
+                    '1' => {
+                        'value' => 'value2'
                     }
                 }
             }
@@ -61,7 +64,7 @@ describe Condition do
     @condition.id = 'id'
     @condition.predicate = :eq
     @condition.attribute = 'attribute'
-    @condition.value = 'value'
+    @condition.value = %w{value1 value2}
     ransack_hash = @condition.ransackify
     ransack_hash.should eq result
   end
