@@ -14,7 +14,7 @@ describe Grouping do
   end
 
   it 'should return a accept setting combinator' do
-    lambda {@grouping.combinator = :and}.should_not raise_error
+    lambda { @grouping.combinator = :and }.should_not raise_error
   end
 
   it 'should allow you to add a condition' do
@@ -23,8 +23,8 @@ describe Grouping do
   end
 
   it 'should allow adding conditions through chaining' do
-    @grouping.add_condition({attribute: 'location_code', value: '001', predicate: 'eq'}).
-        add_condition({attribute: 'location_code', value: '002', predicate: 'eq'})
+    @grouping.add_condition(Condition.new(attribute: 'location_code', value: '001', predicate: 'eq')).
+        add_condition(Condition.new(attribute: 'location_code', value: '002', predicate: 'eq'))
     @grouping.conditions.size.should eq 2
   end
 
@@ -40,7 +40,9 @@ describe Grouping do
   end
 
   it 'should allow adding conditions en masse' do
-    @grouping.add_conditions([{attribute: 'location_code', value: '001', predicate: 'eq'}, {attribute: 'location_code', value: '001', predicate: 'eq'}])
+    @grouping.add_conditions(
+        [Condition.new(attribute: 'location_code', value: '001', predicate: 'eq'),
+         Condition.new(attribute: 'location_code', value: '001', predicate: 'eq')])
     @grouping.conditions.size.should eq 2
   end
 
