@@ -67,4 +67,12 @@ describe Grouping do
     klass.should eq Grouping
   end
 
+  it 'should allow initializing via a block' do
+    klass = nil
+    Grouping.new do |grouping|
+      klass = grouping.class
+    end
+    klass.should eq Grouping
+  end
+
 end

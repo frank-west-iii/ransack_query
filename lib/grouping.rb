@@ -6,6 +6,7 @@ class Grouping
     @combinator = :and
     @conditions = []
     @groupings = []
+    yield self if block_given?
   end
 
   def add_condition(condition=nil)
