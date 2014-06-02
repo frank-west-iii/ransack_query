@@ -4,6 +4,7 @@ class Grouping
 
   def initialize
     @id = IdGenerator.generate
+    @combinator = :and
     @conditions = []
     @groupings = []
   end

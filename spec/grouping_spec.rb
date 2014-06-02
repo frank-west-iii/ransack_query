@@ -9,6 +9,10 @@ describe Grouping do
     @grouping.id.should_not be nil
   end
 
+  it 'should have a default combinator of and' do
+    @grouping.combinator.should eq :and
+  end
+
   it 'should return a accept setting combinator' do
     (@grouping.combinator = :and).should_not raise_error
   end
