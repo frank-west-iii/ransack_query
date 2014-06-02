@@ -5,7 +5,7 @@ describe Grouping do
     @grouping = Grouping.new
   end
 
-  it 'should have an id'do
+  it 'should have an id' do
     @grouping.id.should_not be nil
   end
 
@@ -37,6 +37,32 @@ describe Grouping do
     @grouping.add_grouping(Grouping.new).
         add_grouping(Grouping.new)
     @grouping.groupings.size.should eq 2
+  end
+
+  it 'should allow adding conditions en masse' do
+    @grouping.add_conditions([{attribute: 'location_code', value: '001', predicate: 'eq'}, {attribute: 'location_code', value: '001', predicate: 'eq'}])
+    @grouping.conditions.size.should eq 2
+  end
+
+  it 'should allow adding groupings en masse' do
+    @grouping.add_groupings([Grouping.new, Grouping.new])
+    @grouping.groupings.size.should eq 2
+  end
+
+  it 'should allow adding a condition via a block' do
+    klass = nil
+    @grouping.add_condition do |condition|
+      klass = condition.class
+    end
+    klass.should eq Condition
+  end
+
+  it 'should allow adding a group via a block' do
+    klass = nil
+    @grouping.add_grouping do |grouping|
+      klass = grouping.class
+    end
+    klass.should eq Grouping
   end
 
 end
