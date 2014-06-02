@@ -1,5 +1,6 @@
 require 'ransack_query/version'
 require 'grouping'
+require 'condition'
 
 module RansackQuery
 
