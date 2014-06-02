@@ -14,7 +14,7 @@ describe Grouping do
   end
 
   it 'should return a accept setting combinator' do
-    (@grouping.combinator = :and).should_not raise_error
+    lambda {@grouping.combinator = :and}.should_not raise_error
   end
 
   it 'should allow you to add a condition' do

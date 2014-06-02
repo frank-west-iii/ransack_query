@@ -1,9 +1,8 @@
-require 'id_generator'
 class Grouping
   attr_accessor :id, :combinator, :conditions, :groupings
 
   def initialize
-    @id = IdGenerator.generate
+    @id = RansackQuery.generate_id
     @combinator = :and
     @conditions = []
     @groupings = []

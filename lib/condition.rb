@@ -1,13 +1,36 @@
-require 'id_generator'
-
 class Condition
   attr_accessor :id, :predicate, :attribute, :value
 
   def initialize(attributes={})
-    @id = IdGenerator.generate
-    @predicate = attributes[:predicate] || 'eq'
+    @id = RansackQuery.generate_id
+    @predicate = attributes[:predicate] || :eq
     @attribute = attributes[:attribute]
     @value = attributes[:value]
+  end
+
+  def ransackify
+    {
+        'c' => {
+            @id => {
+                'a' => build_ransack_array(@attribute, 'name'),
+                'p' => @predicate.to_s,
+                'v' => build_ransack_array(@value, 'value')
+            }
+        }
+    }
+  end
+
+  private
+  def build_ransack_array(array, hash_key)
+    counter = -1
+    [array].flatten.reduce({}) do |result, attribute|
+      counter += 1
+      result.merge({
+                       counter.to_s => {
+                           hash_key => attribute
+                       }
+                   })
+    end
   end
 
 end

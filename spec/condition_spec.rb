@@ -10,19 +10,19 @@ describe Condition do
   end
 
   it 'should have a default predicate of eq' do
-    @condition.predicate.should eq 'eq'
+    @condition.predicate.should eq :eq
   end
 
   it 'should accept a predicate' do
-    (@condition.predicate = :eq).should_not raise_error
+    lambda {@condition.predicate = :eq}.should_not raise_error
   end
 
   it 'should accept an attribute' do
-    (@condition.attribute = 'attribute').should_not raise_error
+    lambda {@condition.attribute = 'attribute'}.should_not raise_error
   end
 
   it 'should accept a value' do
-    (@condition.value = 'value').should_not raise_error
+    lambda {@condition.value = 'value'}.should_not raise_error
   end
 
   it 'should accept setting the attribute via the initializer' do
@@ -38,6 +38,32 @@ describe Condition do
   it 'should accept setting the predicate via the initializer' do
     condition = Condition.new(predicate: 'predicate')
     condition.predicate.should eq 'predicate'
+  end
+
+  it 'should build a ransack hash' do
+    result = {
+        'c' => {
+            'id' => {
+                'a' => {
+                    '0' => {
+                        'name' => 'attribute'
+                    }
+                },
+                'p' => 'eq',
+                'v' => {
+                    '0' => {
+                        'value' => 'value'
+                    }
+                }
+            }
+        }
+    }
+    @condition.id = 'id'
+    @condition.predicate = :eq
+    @condition.attribute = 'attribute'
+    @condition.value = 'value'
+    ransack_hash = @condition.ransackify
+    ransack_hash.should eq result
   end
 
 end
