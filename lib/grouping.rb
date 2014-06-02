@@ -1,7 +1,9 @@
+require 'id_generator'
 class Grouping
-  attr_accessor :combinator, :conditions, :groupings
+  attr_accessor :id, :combinator, :conditions, :groupings
 
   def initialize
+    @id = IdGenerator.generate
     @conditions = []
     @groupings = []
   end

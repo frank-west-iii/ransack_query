@@ -5,6 +5,10 @@ describe Grouping do
     @grouping = Grouping.new
   end
 
+  it 'should have an id'do
+    @grouping.id.should_not be nil
+  end
+
   it 'should return a accept setting combinator' do
     (@grouping.combinator = :and).should_not raise_error
   end
