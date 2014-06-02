@@ -9,6 +9,9 @@ describe Condition do
     @condition.id.should_not be nil
   end
 
+  it 'should have a default predicate of eq' do
+    @condition.predicate.should eq 'eq'
+  end
 
   it 'should accept a predicate' do
     (@condition.predicate = :eq).should_not raise_error
@@ -30,6 +33,11 @@ describe Condition do
   it 'should accept setting the value via the initializer' do
     condition = Condition.new(value: 'value')
     condition.value.should eq 'value'
+  end
+
+  it 'should accept setting the predicate via the initializer' do
+    condition = Condition.new(predicate: 'predicate')
+    condition.predicate.should eq 'predicate'
   end
 
 end

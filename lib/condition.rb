@@ -5,6 +5,7 @@ class Condition
 
   def initialize(attributes={})
     @id = IdGenerator.generate
+    @predicate = attributes[:predicate] || 'eq'
     @attribute = attributes[:attribute]
     @value = attributes[:value]
   end
