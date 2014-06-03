@@ -26,25 +26,21 @@ Simple Usage:
       grouping.add_condition(Condition.new(attribute: 'first_name', value: 'Bob'))
       grouping.add_condition(Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
     end
-and
+and chainable
     
     RansackQuery.build do |grouping|
       grouping.add_condition(Condition.new(attribute: 'first_name', value: 'Bob')).
         add_condition(Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
     end
-and
+and with arrays
     
     RansackQuery.build do |grouping|
       conditions = []
       conditions << Condition.new(attribute: 'first_name', value: 'Bob')
-      conditions << Condition.new do |condition|
-        condition.attribute = 'last_name'
-        condition.value = 'Smith'
-        condition.predicate = :not_eq
-      end
+      conditions << Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq)
       grouping.add_conditions(conditions)
     end
-and
+and with blocks
 
     RansackQuery.build(prefix: 'q') do |grouping|
       grouping.add_condition do |condition|
