@@ -1,15 +1,20 @@
 require 'ransack_query/version'
 require 'grouping'
 require 'condition'
+require 'json'
+require 'securerandom'
 
 module RansackQuery
 
   def self.build
-    yield Grouping.new if block_given?
+    grouping = Grouping.new do |new_grouping|
+      yield new_grouping
+    end
+    grouping.ransackify.to_json
   end
 
   def self.generate_id
-    (Time.now.to_f * 1000).to_i
+    SecureRandom.hex
   end
 
 end
