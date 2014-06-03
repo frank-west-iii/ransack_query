@@ -40,6 +40,14 @@ describe Condition do
     condition.predicate.should eq 'predicate'
   end
 
+  it 'should allow initializing via a block' do
+    id = nil
+    condition = Condition.new do |condition|
+      id = condition.id
+    end
+    id.should eq condition.id
+  end
+
   it 'should build a ransack hash' do
     result = {
         'id' => {

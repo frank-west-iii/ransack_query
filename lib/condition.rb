@@ -6,6 +6,7 @@ class Condition
     @predicate = attributes[:predicate] || :eq
     @attribute = attributes[:attribute]
     @value = attributes[:value]
+    yield self if block_given?
   end
 
   def ransackify
