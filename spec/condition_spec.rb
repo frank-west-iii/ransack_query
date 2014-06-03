@@ -14,15 +14,15 @@ describe Condition do
   end
 
   it 'should accept a predicate' do
-    lambda {@condition.predicate = :eq}.should_not raise_error
+    lambda { @condition.predicate = :eq }.should_not raise_error
   end
 
   it 'should accept an attribute' do
-    lambda {@condition.attribute = 'attribute'}.should_not raise_error
+    lambda { @condition.attribute = 'attribute' }.should_not raise_error
   end
 
   it 'should accept a value' do
-    lambda {@condition.value = 'value'}.should_not raise_error
+    lambda { @condition.value = 'value' }.should_not raise_error
   end
 
   it 'should accept setting the attribute via the initializer' do
@@ -42,21 +42,19 @@ describe Condition do
 
   it 'should build a ransack hash' do
     result = {
-        'c' => {
-            'id' => {
-                'a' => {
-                    '0' => {
-                        'name' => 'attribute'
-                    }
+        'id' => {
+            'a' => {
+                '0' => {
+                    'name' => 'attribute'
+                }
+            },
+            'p' => 'eq',
+            'v' => {
+                '0' => {
+                    'value' => 'value1'
                 },
-                'p' => 'eq',
-                'v' => {
-                    '0' => {
-                        'value' => 'value1'
-                    },
-                    '1' => {
-                        'value' => 'value2'
-                    }
+                '1' => {
+                    'value' => 'value2'
                 }
             }
         }

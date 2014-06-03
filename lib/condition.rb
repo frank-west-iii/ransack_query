@@ -10,12 +10,10 @@ class Condition
 
   def ransackify
     {
-        'c' => {
-            @id => {
-                'a' => build_ransack_array(@attribute, 'name'),
-                'p' => @predicate.to_s,
-                'v' => build_ransack_array(@value, 'value')
-            }
+        @id => {
+            'a' => build_ransack_array(@attribute, 'name'),
+            'p' => @predicate.to_s,
+            'v' => build_ransack_array(@value, 'value')
         }
     }
   end
