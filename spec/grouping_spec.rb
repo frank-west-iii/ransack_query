@@ -75,4 +75,59 @@ describe Grouping do
     id.should eq grouping.id
   end
 
+  it 'should build a ransack hash' do
+    results = {
+        'g' => {
+            'id1' => {
+                'm' => 'and',
+                'c' => {
+                    'id2' => {
+                        'a' => {
+                            '0' => {
+                                'name' => 'ItemNumber'
+                            }
+                        },
+                        'p' => 'eq',
+                        'v' => {
+                            '0' => {
+                                'value' => 'RC'
+                            }
+                        }
+                    },
+                    'id3' => {
+                        'a' => {
+                            '0' => {
+                                'name' => 'LocationCode'
+                            }
+                        },
+                        'p' => 'eq',
+                        'v' => {
+                            '0' => {
+                                'value' => '002'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @grouping.id = 'id1'
+    @grouping.combinator = :and
+    @grouping.add_condition do |condition|
+      condition.id = 'id2'
+      condition.attribute = 'ItemNumber'
+      condition.value = 'RC'
+    end
+
+    @grouping.add_condition do |condition|
+      condition.id = 'id3'
+      condition.attribute = 'LocationCode'
+      condition.value = '002'
+    end
+
+    @grouping.ransackify.should eq results
+
+  end
+
 end

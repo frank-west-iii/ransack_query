@@ -11,7 +11,9 @@ class Grouping
 
   def add_condition(condition=nil)
     if block_given?
-      condition = yield Condition.new
+      condition = Condition.new do |new_condition|
+        yield new_condition
+      end
     end
     conditions << condition
     self
@@ -19,7 +21,9 @@ class Grouping
 
   def add_grouping(grouping=nil)
     if block_given?
-      grouping = yield Grouping.new
+      grouping = Grouping.new do |new_grouping|
+        yield new_grouping
+      end
     end
     groupings << grouping
     self
@@ -27,10 +31,32 @@ class Grouping
 
   def add_conditions(conditions)
     @conditions += conditions
+    self
   end
 
   def add_groupings(groupings)
     @groupings += groupings
+    self
+  end
+
+  def ransackify
+    ransack_hash = {
+        'g' => {
+            @id => {
+                'm' => @combinator.to_s
+            }
+        }
+    }
+    ransackify_conditions(ransack_hash)
+    ransack_hash
+  end
+
+  private
+
+  def ransackify_conditions(ransack_hash)
+    return if conditions.empty?
+    puts ransack_hash
+    ransack_hash['g'][@id].merge!({'c' => conditions.reduce({}) {|result, condition| result.merge! condition.ransackify}})
   end
 
 end
