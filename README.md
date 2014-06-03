@@ -42,7 +42,7 @@ and with arrays
     end
 and with blocks
 
-    RansackQuery.build(prefix: 'q') do |grouping|
+    RansackQuery.build do |grouping|
       grouping.add_condition do |condition|
         condition.attribute = 'first_name'
         condition.value = 'Bob'
@@ -56,7 +56,7 @@ and with blocks
     end
 
 
-All Produce the following output (with different ids):
+All Produce the following output in json (with different ids):
 
     {
         "g" => {
@@ -97,7 +97,7 @@ All Produce the following output (with different ids):
      
 and passing the following options hash to build
     
-    RansackQuery.build(format: :json, prefix: 'q')
+    RansackQuery.build(prefix: 'q')
     
 will produce the following in json 
 
@@ -225,7 +225,7 @@ Will produce:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/ransack_query/fork )
+1. Fork it ( https://github.com/frank-west-iii/ransack_query/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

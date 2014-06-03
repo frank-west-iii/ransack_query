@@ -42,7 +42,7 @@ class Grouping
 
   def ransackify
     ransack_hash = {
-        'g' => {
+        group_id => {
             @id => {
                 'm' => @combinator.to_s
             }
@@ -55,14 +55,18 @@ class Grouping
 
   private
 
+  def group_id
+    "ransack_group_#{id}"
+  end
+
   def ransackify_conditions(ransack_hash)
     return if conditions.empty?
-    ransack_hash['g'][@id].merge!({'c' => conditions.reduce({}) {|result, condition| result.merge! condition.ransackify}})
+    ransack_hash[group_id][@id].merge!({'c' => conditions.reduce({}) { |result, condition| result.merge! condition.ransackify }})
   end
 
   def ransackify_groupings(ransack_hash)
     return if groupings.empty?
-    groupings.each {|grouping| ransack_hash['g'][@id].merge!(grouping.ransackify)}
+    groupings.each { |grouping| ransack_hash[group_id][@id].merge!(grouping.ransackify) }
   end
 
 end

@@ -12,8 +12,7 @@ module RansackQuery
     end
     ransack_hash = grouping.ransackify
     ransack_hash = {options[:prefix] => ransack_hash} if options[:prefix]
-    ransack_hash = ransack_hash.to_json if options[:format] == :json
-    ransack_hash
+    ransack_hash.to_json.gsub(/"ransack_group.*?"/, '"g"')
   end
 
   def self.generate_id

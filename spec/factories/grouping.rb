@@ -7,7 +7,12 @@ FactoryGirl.define do
     trait :complex do
       combinator :or
       after(:build) do |obj|
-        obj.add_grouping(FactoryGirl.build(:grouping, :with_conditions))
+        grouping = FactoryGirl.build(:grouping, :with_conditions)
+        grouping.id = 2
+        obj.add_grouping(grouping)
+        grouping = FactoryGirl.build(:grouping, :with_conditions)
+        grouping.id = 3
+        obj.add_grouping(grouping)
       end
     end
 
