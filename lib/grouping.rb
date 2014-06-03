@@ -1,5 +1,6 @@
 class Grouping
-  attr_accessor :id, :combinator, :conditions, :groupings
+  attr_accessor :id, :combinator
+  attr_reader :conditions, :groupings
 
   def initialize
     @id = RansackQuery.generate_id

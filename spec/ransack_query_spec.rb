@@ -24,4 +24,15 @@ describe RansackQuery do
     end.should eq "{\"g\":{\"id1\":{\"m\":\"and\",\"c\":{\"id2\":{\"a\":{\"0\":{\"name\":\"attribute\"}},\"p\":\"eq\",\"v\":{\"0\":{\"value\":\"value\"}}}}}}}"
   end
 
+  it 'should allow a prefix to be passed in' do
+    RansackQuery.build('q') do |grouping|
+      grouping.id = 'id1'
+      grouping.add_condition do |condition|
+        condition.id = 'id2'
+        condition.attribute = 'attribute'
+        condition.value = 'value'
+      end
+    end.should eq "{\"q\":{\"g\":{\"id1\":{\"m\":\"and\",\"c\":{\"id2\":{\"a\":{\"0\":{\"name\":\"attribute\"}},\"p\":\"eq\",\"v\":{\"0\":{\"value\":\"value\"}}}}}}}}"
+  end
+
 end
