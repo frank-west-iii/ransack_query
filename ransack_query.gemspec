@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email = ['fwest@heiskell.com']
   spec.summary = %q{Provides a way to build advanced ransack queries.}
   spec.description = %q{Provides a way to build ransack queries without building a form and usable to generate testing queries. }
-  spec.homepage = ''
+  spec.homepage = 'https://github.com/frank-west-iii/ransack_query'
   spec.license = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0")
