@@ -19,8 +19,8 @@ FactoryGirl.define do
     trait :with_conditions do
       id 2
       after(:build) do |obj|
-        obj.add_condition FactoryGirl.build(:condition, :first_name)
-        obj.add_condition FactoryGirl.build(:condition, :last_name)
+        obj.add_condition FactoryGirl.build(:condition, :document_number)
+        obj.add_condition FactoryGirl.build(:condition, :driver_name)
       end
     end
 
