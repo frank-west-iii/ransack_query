@@ -13,7 +13,7 @@ describe RansackQuery do
     klass.should equal Grouping
   end
 
-  it 'should return a hash' do
+  it 'should return a json string' do
     RansackQuery.build do |grouping|
       grouping.id = 'id1'
       grouping.add_condition do |condition|
@@ -21,18 +21,7 @@ describe RansackQuery do
         condition.attribute = 'attribute'
         condition.value = 'value'
       end
-    end.should eq({'g' => {'id1' => {'m' => 'and', 'c' => {'id2' => {'a' => {'0' => {'name' => 'attribute'}}, 'p' => 'eq', 'v' => {'0' => {'value' => 'value'}}}}}}})
-  end
-
-  it 'should return a json string if specified' do
-    RansackQuery.build(format: :json) do |grouping|
-      grouping.id = 'id1'
-      grouping.add_condition do |condition|
-        condition.id = 'id2'
-        condition.attribute = 'attribute'
-        condition.value = 'value'
-      end
-    end.should eq "{\"g\":{\"id1\":{\"m\":\"and\",\"c\":{\"id2\":{\"a\":{\"0\":{\"name\":\"attribute\"}},\"p\":\"eq\",\"v\":{\"0\":{\"value\":\"value\"}}}}}}}"
+    end.should eq("{\"g\":{\"id1\":{\"m\":\"and\",\"c\":{\"id2\":{\"a\":{\"0\":{\"name\":\"attribute\"}},\"p\":\"eq\",\"v\":{\"0\":{\"value\":\"value\"}}}}}}}" )
   end
 
   it 'should allow a prefix to be passed in' do
@@ -43,7 +32,7 @@ describe RansackQuery do
         condition.attribute = 'attribute'
         condition.value = 'value'
       end
-    end.should eq({'q' => {'g' => {'id1' => {'m' => 'and', 'c' => {'id2' => {'a' => {'0' => {'name' => 'attribute'}}, 'p' => 'eq', 'v' => {'0' => {'value' => 'value'}}}}}}}})
+    end.should eq("{\"q\":{\"g\":{\"id1\":{\"m\":\"and\",\"c\":{\"id2\":{\"a\":{\"0\":{\"name\":\"attribute\"}},\"p\":\"eq\",\"v\":{\"0\":{\"value\":\"value\"}}}}}}}}")
   end
 
 end

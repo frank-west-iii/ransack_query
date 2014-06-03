@@ -26,11 +26,44 @@ FactoryGirl.define do
     skip_create
     initialize_with {
       {
-          'g' => {
+          'ransack_group_1' => {
               1 => {
                   'm' => 'or',
-                  'g' => {
+                  'ransack_group_2' => {
                       2 => {
+                          'm' => 'and',
+                          'c' => {
+                              2 => {
+                                  'a' => {
+                                      '0' => {
+                                          'name' => 'first_name'
+                                      }
+                                  },
+                                  'p' => 'eq',
+                                  'v' => {
+                                      '0' => {
+                                          'value' => 'Bob'
+                                      }
+                                  }
+                              },
+                              3 => {
+                                  'a' => {
+                                      '0' => {
+                                          'name' => 'last_name'
+                                      }
+                                  },
+                                  'p' => 'eq',
+                                  'v' => {
+                                      '0' => {
+                                          'value' => 'Smith'
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  'ransack_group_3' => {
+                      3 => {
                           'm' => 'and',
                           'c' => {
                               2 => {
@@ -64,7 +97,8 @@ FactoryGirl.define do
                   }
               }
           }
-      } }
+      }
+    }
   end
 
 end
