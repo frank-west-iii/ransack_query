@@ -68,11 +68,11 @@ describe Grouping do
   end
 
   it 'should allow initializing via a block' do
-    klass = nil
-    Grouping.new do |grouping|
-      klass = grouping.class
+    id = nil
+    grouping = Grouping.new do |grouping|
+      id = grouping.id
     end
-    klass.should eq Grouping
+    id.should eq grouping.id
   end
 
 end
