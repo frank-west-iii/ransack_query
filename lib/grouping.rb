@@ -48,6 +48,7 @@ class Grouping
         }
     }
     ransackify_conditions(ransack_hash)
+    ransackify_groupings(ransack_hash)
     ransack_hash
   end
 
@@ -55,8 +56,12 @@ class Grouping
 
   def ransackify_conditions(ransack_hash)
     return if conditions.empty?
-    puts ransack_hash
     ransack_hash['g'][@id].merge!({'c' => conditions.reduce({}) {|result, condition| result.merge! condition.ransackify}})
+  end
+
+  def ransackify_groupings(ransack_hash)
+    return if groupings.empty?
+    groupings.each {|grouping| ransack_hash['g'][@id].merge!(grouping.ransackify)}
   end
 
 end

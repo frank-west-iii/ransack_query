@@ -79,31 +79,36 @@ describe Grouping do
     results = {
         'g' => {
             'id1' => {
-                'm' => 'and',
-                'c' => {
+                'm' => 'or',
+                'g' => {
                     'id2' => {
-                        'a' => {
-                            '0' => {
-                                'name' => 'ItemNumber'
-                            }
-                        },
-                        'p' => 'eq',
-                        'v' => {
-                            '0' => {
-                                'value' => 'RC'
-                            }
-                        }
-                    },
-                    'id3' => {
-                        'a' => {
-                            '0' => {
-                                'name' => 'LocationCode'
-                            }
-                        },
-                        'p' => 'eq',
-                        'v' => {
-                            '0' => {
-                                'value' => '002'
+                        'm' => 'and',
+                        'c' => {
+                            'id3' => {
+                                'a' => {
+                                    '0' => {
+                                        'name' => 'ItemNumber'
+                                    }
+                                },
+                                'p' => 'eq',
+                                'v' => {
+                                    '0' => {
+                                        'value' => 'RC'
+                                    }
+                                }
+                            },
+                            'id4' => {
+                                'a' => {
+                                    '0' => {
+                                        'name' => 'LocationCode'
+                                    }
+                                },
+                                'p' => 'eq',
+                                'v' => {
+                                    '0' => {
+                                        'value' => '002'
+                                    }
+                                }
                             }
                         }
                     }
@@ -113,17 +118,23 @@ describe Grouping do
     }
 
     @grouping.id = 'id1'
-    @grouping.combinator = :and
-    @grouping.add_condition do |condition|
-      condition.id = 'id2'
-      condition.attribute = 'ItemNumber'
-      condition.value = 'RC'
-    end
+    @grouping.combinator = :or
 
-    @grouping.add_condition do |condition|
-      condition.id = 'id3'
-      condition.attribute = 'LocationCode'
-      condition.value = '002'
+    @grouping.add_grouping do |grouping|
+      grouping.id = 'id2'
+      grouping.combinator = :and
+
+      grouping.add_condition do |condition|
+        condition.id = 'id3'
+        condition.attribute = 'ItemNumber'
+        condition.value = 'RC'
+      end
+
+      grouping.add_condition do |condition|
+        condition.id = 'id4'
+        condition.attribute = 'LocationCode'
+        condition.value = '002'
+      end
     end
 
     @grouping.ransackify.should eq results
