@@ -30,32 +30,32 @@ FactoryGirl.define do
               1 => {
                   'm' => 'or',
                   'g' => {
-                      'id2' => {
+                      2 => {
                           'm' => 'and',
                           'c' => {
-                              'id3' => {
+                              2 => {
                                   'a' => {
                                       '0' => {
-                                          'name' => 'ItemNumber'
+                                          'name' => 'first_name'
                                       }
                                   },
                                   'p' => 'eq',
                                   'v' => {
                                       '0' => {
-                                          'value' => 'RC'
+                                          'value' => 'Bob'
                                       }
                                   }
                               },
-                              'id4' => {
+                              3 => {
                                   'a' => {
                                       '0' => {
-                                          'name' => 'LocationCode'
+                                          'name' => 'last_name'
                                       }
                                   },
                                   'p' => 'eq',
                                   'v' => {
                                       '0' => {
-                                          'value' => '002'
+                                          'value' => 'Smith'
                                       }
                                   }
                               }

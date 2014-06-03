@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Grouping do
   subject { FactoryGirl.build(:grouping) }
-  let(:or_grouping) { FactoryGirl.build(:grouping, :or_grouping) }
+  let(:complex) { FactoryGirl.build(:grouping, :complex) }
+  let(:with_conditions) { FactoryGirl.build(:grouping, :with_conditions) }
 
   it 'should have an id' do
     subject.id.should_not be nil
@@ -75,26 +76,7 @@ describe Grouping do
   end
 
   it 'should build a ransack hash' do
-
-    or_grouping.add_grouping do |grouping|
-      grouping.id = 'id2'
-      grouping.combinator = :and
-
-      grouping.add_condition do |condition|
-        condition.id = 'id3'
-        condition.attribute = 'ItemNumber'
-        condition.value = 'RC'
-      end
-
-      grouping.add_condition do |condition|
-        condition.id = 'id4'
-        condition.attribute = 'LocationCode'
-        condition.value = '002'
-      end
-    end
-
-    or_grouping.ransackify.should eq FactoryGirl.build(:grouping_hash)
-
+    complex.ransackify.should eq FactoryGirl.build(:grouping_hash)
   end
 
 end

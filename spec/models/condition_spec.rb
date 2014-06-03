@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Condition do
+  let(:condition) { FactoryGirl.build(:condition) }
+  let(:condition_hash) { FactoryGirl.build(:condition_hash) }
 
   it 'should have an id' do
     subject.id.should_not be nil
@@ -23,31 +25,27 @@ describe Condition do
   end
 
   it 'should accept setting the attribute via the initializer' do
-    condition = Condition.new(attribute: 'new_attribute')
-    condition.attribute.should eq 'new_attribute'
+    Condition.new(attribute: 'new_attribute').attribute.should eq 'new_attribute'
   end
 
   it 'should accept setting the value via the initializer' do
-    condition = Condition.new(value: 'new_value')
-    condition.value.should eq 'new_value'
+    Condition.new(value: 'new_value').value.should eq 'new_value'
   end
 
   it 'should accept setting the predicate via the initializer' do
-    condition = Condition.new(predicate: 'new_predicate')
-    condition.predicate.should eq 'new_predicate'
+    Condition.new(predicate: 'new_predicate').predicate.should eq 'new_predicate'
   end
 
   it 'should allow initializing via a block' do
     id = nil
-    condition = Condition.new do |condition|
+    new_condition = Condition.new do |condition|
       id = condition.id
     end
-    id.should eq condition.id
+    id.should eq new_condition.id
   end
 
   it 'should build a ransack hash' do
-    condition = FactoryGirl.build(:condition)
-    condition.ransackify.should eq FactoryGirl.build(:condition_hash)
+    condition.ransackify.should eq condition_hash
   end
 
 end
