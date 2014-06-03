@@ -6,13 +6,14 @@ require 'securerandom'
 
 module RansackQuery
 
-  def self.build(prefix = nil)
+  def self.build(options = {})
     grouping = Grouping.new do |new_grouping|
       yield new_grouping
     end
     ransack_hash = grouping.ransackify
-    ransack_hash = {prefix => ransack_hash} unless prefix.nil?
-    ransack_hash.to_json
+    ransack_hash = {options[:prefix] => ransack_hash} if options[:prefix]
+    ransack_hash = ransack_hash.to_json if options[:format] == :json
+    ransack_hash
   end
 
   def self.generate_id
