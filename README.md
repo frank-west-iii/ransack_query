@@ -42,7 +42,7 @@ and with arrays
     end
 and with blocks
 
-    RansackQuery.build do |grouping|
+    RansackQuery.build(prefix: 'q') do |grouping|
       grouping.add_condition do |condition|
         condition.attribute = 'first_name'
         condition.value = 'Bob'
@@ -56,7 +56,7 @@ and with blocks
     end
 
 
-All Produce the following output in json (with different ids):
+All Produce the following output (with different ids):
 
     {
         "g" => {
@@ -97,7 +97,7 @@ All Produce the following output in json (with different ids):
      
 and passing the following options hash to build
     
-    RansackQuery.build(prefix: 'q')
+    RansackQuery.build(format: :json, prefix: 'q')
     
 will produce the following in json 
 

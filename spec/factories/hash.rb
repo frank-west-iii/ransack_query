@@ -26,70 +26,66 @@ FactoryGirl.define do
     skip_create
     initialize_with {
       {
-          'ransack_group_1' => {
-              1 => {
-                  'm' => 'or',
-                  'ransack_group_2' => {
-                      2 => {
-                          'm' => 'and',
-                          'c' => {
-                              2 => {
-                                  'a' => {
-                                      '0' => {
-                                          'name' => 'first_name'
-                                      }
-                                  },
-                                  'p' => 'eq',
-                                  'v' => {
-                                      '0' => {
-                                          'value' => 'Bob'
-                                      }
+          1 => {
+              'm' => 'or',
+              'g' => {
+                  2 => {
+                      'm' => 'and',
+                      'c' => {
+                          2 => {
+                              'a' => {
+                                  '0' => {
+                                      'name' => 'document_number'
                                   }
                               },
-                              3 => {
-                                  'a' => {
-                                      '0' => {
-                                          'name' => 'last_name'
-                                      }
-                                  },
-                                  'p' => 'eq',
-                                  'v' => {
-                                      '0' => {
-                                          'value' => 'Smith'
-                                      }
+                              'p' => 'eq',
+                              'v' => {
+                                  '0' => {
+                                      'value' => '111'
+                                  }
+                              }
+                          },
+                          3 => {
+                              'a' => {
+                                  '0' => {
+                                      'name' => 'driver_name'
+                                  }
+                              },
+                              'p' => 'eq',
+                              'v' => {
+                                  '0' => {
+                                      'value' => '222'
                                   }
                               }
                           }
                       }
                   },
-                  'ransack_group_3' => {
-                      3 => {
-                          'm' => 'and',
-                          'c' => {
-                              2 => {
-                                  'a' => {
-                                      '0' => {
-                                          'name' => 'first_name'
-                                      }
-                                  },
-                                  'p' => 'eq',
-                                  'v' => {
-                                      '0' => {
-                                          'value' => 'Bob'
-                                      }
+                  3 => {
+                      'm' => 'and',
+                      'c' => {
+                          2 => {
+                              'a' => {
+                                  '0' => {
+                                      'name' => 'document_number'
                                   }
                               },
-                              3 => {
-                                  'a' => {
-                                      '0' => {
-                                          'name' => 'last_name'
-                                      }
-                                  },
-                                  'p' => 'eq',
-                                  'v' => {
-                                      '0' => {
-                                          'value' => 'Smith'
-                                      }
+                              'p' => 'eq',
+                              'v' => {
+                                  '0' => {
+                                      'value' => '111'
+                                  }
+                              }
+                          },
+                          3 => {
+                              'a' => {
+                                  '0' => {
+                                      'name' => 'driver_name'
+                                  }
+                              },
+                              'p' => 'eq',
+                              'v' => {
+                                  '0' => {
+                                      'value' => '222'
                                   }
                               }
                           }

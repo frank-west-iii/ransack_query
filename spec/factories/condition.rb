@@ -6,16 +6,16 @@ FactoryGirl.define do
     attribute 'attribute'
     value 'value'
 
-    trait :first_name do
+    trait :document_number do
       id 2
-      attribute 'first_name'
-      value 'Bob'
+      attribute 'document_number'
+      value '111'
     end
 
-    trait :last_name do
+    trait :driver_name do
       id 3
-      attribute 'last_name'
-      value 'Smith'
+      attribute 'driver_name'
+      value '222'
     end
   end
 
