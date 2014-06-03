@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version = RansackQuery::VERSION
   spec.authors = ['Frank West']
   spec.email = ['fwest@heiskell.com']
-  spec.summary = %q{Provides a dsl to build ransack queries.}
-  spec.description = %q{Provides a dsl to build ransack queries.}
+  spec.summary = %q{Provides a way to build advanced ransack queries.}
+  spec.description = %q{Provides a way to build ransack queries without building a form and usable to generate testing queries. }
   spec.homepage = ''
   spec.license = 'MIT'
 
@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-remote'
   spec.add_development_dependency 'pry-nav'
+  spec.add_development_dependency 'factory_girl', '~> 4.4.0'
 end
