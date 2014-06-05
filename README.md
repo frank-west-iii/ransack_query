@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/frank-west-iii/ransack_query.png)](https://codeclimate.com/github/frank-west-iii/ransack_query)
+
 # RansackQuery
 
 This gem provides a semantic way of building advanced ransack queries outside of using the form.
