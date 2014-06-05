@@ -44,7 +44,7 @@ and with arrays
     end
 and with blocks
 
-    RansackQuery.build(prefix: 'q') do |grouping|
+    RansackQuery.build do |grouping|
       grouping.add_condition do |condition|
         condition.attribute = 'first_name'
         condition.value = 'Bob'
