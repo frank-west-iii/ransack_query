@@ -20,18 +20,4 @@ module RansackQuery
     SecureRandom.hex
   end
 
-  def self.sample
-    build do |grouping|
-      grouping.combinator = :or
-      grouping.add_grouping do |new_grouping|
-        new_grouping.add_condition(Condition.new(attribute: 'document_number', value: '111'))
-        new_grouping.add_condition(Condition.new(attribute: 'driver_name', value: '222'))
-      end
-      grouping.add_grouping do |new_grouping|
-        new_grouping.add_condition(Condition.new(attribute: 'document_number', value: '333'))
-        new_grouping.add_condition(Condition.new(attribute: 'driver_name', value: '444'))
-      end
-    end
-  end
-
 end
