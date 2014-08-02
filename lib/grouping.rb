@@ -16,7 +16,7 @@ class Grouping
         yield new_condition
       end
     end
-    conditions << condition
+    conditions << condition.to_condition
     self
   end
 
@@ -26,17 +26,17 @@ class Grouping
         yield new_grouping
       end
     end
-    groupings << grouping
+    groupings << grouping.to_grouping
     self
   end
 
   def add_conditions(conditions)
-    @conditions += conditions
+    Array(conditions).each {|c| add_condition(c) }
     self
   end
 
   def add_groupings(groupings)
-    @groupings += groupings
+    Array(groupings).each {|g| add_grouping(g) }
     self
   end
 
@@ -49,6 +49,10 @@ class Grouping
     ransackify_conditions(ransack_hash)
     ransackify_groupings(ransack_hash)
     ransack_hash
+  end
+
+  def to_grouping
+    self
   end
 
   private

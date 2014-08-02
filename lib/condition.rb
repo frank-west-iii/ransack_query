@@ -19,6 +19,10 @@ class Condition
     }
   end
 
+  def to_condition
+    self
+  end
+
   private
   def build_ransack_array(array, hash_key)
     counter = -1

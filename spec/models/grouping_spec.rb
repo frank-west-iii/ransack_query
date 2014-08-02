@@ -18,7 +18,7 @@ describe Grouping do
   end
 
   it 'should allow you to add a condition' do
-    subject.add_condition({attribute: 'location_code', value: '001', predicate: 'eq'})
+    subject.add_condition(Condition.new({attribute: 'location_code', value: '001', predicate: 'eq'}))
     subject.conditions.size.should eq 1
   end
 
