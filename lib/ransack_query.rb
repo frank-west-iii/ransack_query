@@ -1,13 +1,13 @@
 require 'ransack_query/version'
-require 'grouping'
-require 'condition'
+require 'ransack_grouping'
+require 'ransack_condition'
 require 'json'
 require 'securerandom'
 
 module RansackQuery
 
   def self.build(options = {})
-    grouping = Grouping.new do |new_grouping|
+    grouping = RansackGrouping.new do |new_grouping|
       yield new_grouping
     end
     ransack_hash = {'g' => grouping.ransackify}

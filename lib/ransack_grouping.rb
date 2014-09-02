@@ -1,4 +1,4 @@
-class Grouping
+class RansackGrouping
   attr_accessor :id, :combinator
   attr_reader :conditions, :groupings
 
@@ -12,7 +12,7 @@ class Grouping
 
   def add_condition(condition=nil)
     if block_given?
-      condition = Condition.new do |new_condition|
+      condition = RansackCondition.new do |new_condition|
         yield new_condition
       end
     end
@@ -22,7 +22,7 @@ class Grouping
 
   def add_grouping(grouping=nil)
     if block_given?
-      grouping = Grouping.new do |new_grouping|
+      grouping = RansackGrouping.new do |new_grouping|
         yield new_grouping
       end
     end

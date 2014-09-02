@@ -1,4 +1,4 @@
-class Condition
+class RansackCondition
   attr_accessor :id, :predicate, :attribute, :value
 
   def initialize(attributes={})
