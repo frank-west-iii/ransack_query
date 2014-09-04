@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/frank-west-iii/ransack_query.png)](https://codeclimate.com/github/frank-west-iii/ransack_query)
 [![Build Status](https://travis-ci.org/frank-west-iii/ransack_query.svg?branch=master)](https://travis-ci.org/frank-west-iii/ransack_query)
+[![Coverage Status](https://img.shields.io/coveralls/frank-west-iii/ransack_query.svg)](https://coveralls.io/r/frank-west-iii/ransack_query)
 
 
 # RansackQuery

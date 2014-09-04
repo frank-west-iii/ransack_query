@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'pry'
 require 'ransack_query'
 require 'factory_girl'
