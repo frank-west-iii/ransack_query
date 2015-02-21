@@ -28,21 +28,21 @@ Or install it yourself as:
 Simple Usage:
 
     RansackQuery.build do |grouping|
-      grouping.add_condition(Condition.new(attribute: 'first_name', value: 'Bob'))
-      grouping.add_condition(Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
+      grouping.add_condition(RansackCondition.new(attribute: 'first_name', value: 'Bob'))
+      grouping.add_condition(RansackCondition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
     end
 and chainable
     
     RansackQuery.build do |grouping|
-      grouping.add_condition(Condition.new(attribute: 'first_name', value: 'Bob')).
-        add_condition(Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
+      grouping.add_condition(RansackCondition.new(attribute: 'first_name', value: 'Bob')).
+        add_condition(RansackCondition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq))
     end
 and with arrays
     
     RansackQuery.build do |grouping|
       conditions = []
-      conditions << Condition.new(attribute: 'first_name', value: 'Bob')
-      conditions << Condition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq)
+      conditions << RansackCondition.new(attribute: 'first_name', value: 'Bob')
+      conditions << RansackCondition.new(attribute: 'last_name', value: 'Smith', predicate: :not_eq)
       grouping.add_conditions(conditions)
     end
 and with blocks
